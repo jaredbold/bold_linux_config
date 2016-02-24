@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/afs/awd.austin.ibm.com/proj/p9/eclipz/c14/usr/jmbold/p9ndd1/rtx_ec_p910_131u04a/pCore/src/IFU_UnitEnv'
+let g:netrw_dirhist_2='/afs/awd.austin.ibm.com/proj/p9/eclipz/c14/usr/jmbold/p9ndd1/rtx_reg_model_update/pCore/build/Core/smt_mode_change_issue/simout'
+let g:netrw_dirhist_3='/afs/awd.austin.ibm.com/proj/p9/eclipz/c14/usr/jmbold/p9ndd1/rtx_smt_down_testing/pCore/src/PC_ISU_InterfaceMonitor'
+let g:netrw_dirhist_4='/afs/awd.austin.ibm.com/proj/p9/eclipz/c14/verif/pdd1/core/support/.vol33/0576/pCore/src/PC_All_InterfaceMonitor'
