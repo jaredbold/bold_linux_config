@@ -46,6 +46,10 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
+" Color column over 80 characters
+highlight ColorColumn ctermbg=yellow ctermfg=black
+call matchadd('ColorColumn', '\%81v', 100)
+
 " Doxygen syntax
 let g:load_doxygen_syntax=1
 
