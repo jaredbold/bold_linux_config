@@ -1,8 +1,11 @@
+#!/bin/bash
 ###############################################################
 # .bashrc
 # Jared Bold
 # 1.22.15
 ###############################################################
+# Configuration
+OS=`uname`
 
 ###############################################################
 #			Prompt				      #
@@ -15,15 +18,18 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 #			Terminal			      #
 ###############################################################
 export EDITOR=vim
-export PATH=$PATH:$HOME/bin
+if [ $OS == "Linux" ]; then
+  export PATH=$PATH:$HOME/bin
+  xset b off
+fi
 
 # enable vi input mode
 set -o vi
 # disable the bell
-xset b off
 stty erase '^?'
 
 LS_COLORS=$LS_COLORS:'ow=34;1:' ; export LS_COLORS
+export LESS="-Ri"
 ###############################################################
 #			Aliases				      #
 ###############################################################
@@ -31,15 +37,18 @@ alias :q='exit'
 alias findi='find . -iname'
 alias todo=~/.todo
 alias ..='cd ..'
-alias ls='ls --color=auto'
-alias ll='ls -la'
-alias l='ls' # I always mess this up
+if [ $OS == "Linux" ]; then
+  alias ls='ls --color=auto'
+  alias ll='ls -la'
+  alias grep='grep --color=auto'
+fi
+
+alias l='less' 
 alias nw='(xterm &)'
 alias g='grep'
 
 alias c='clear'
 
-alias grep='grep --color=auto'
 
 alias vi='vim'
 alias vimvs='vim -O'

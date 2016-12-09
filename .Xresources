@@ -1,4 +1,4 @@
-! Xresources anc Xdefaults (symlinked)
+! Xresources and Xdefaults (symlinked)
 ! -------------------------------------
 ! UI and other
 xterm*termName:                    xterm-color
@@ -13,7 +13,7 @@ XTerm*rightScrollBar:              true
 
 ! Font config
 XTerm*faceName:                    Monospace
-XTerm*faceSize:                    8
+XTerm*faceSize:                    12
 
 ! Double and triple click highlighting
 XTerm*VT100.cutNewLine:            false

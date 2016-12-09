@@ -47,15 +47,20 @@ set shiftwidth=2
 set softtabstop=2
 
 " Color column over 80 characters
-highlight ColorColumn ctermbg=yellow ctermfg=black
-call matchadd('ColorColumn', '\%81v', 100)
+"highlight ColorColumn ctermbg=yellow ctermfg=black
+"call matchadd('ColorColumn', '\%81v', 100)
 
 " Doxygen syntax
 let g:load_doxygen_syntax=1
 
+" Commands
+" Filter
+command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+
 " Macro
 let @d = 'oif(){}koout() << simcycle << getName() << "::" << __FUNCTION++€kb€kb__ << ":"		<<<< endlh€kb;kkkk'
 let @t = 'ofor(uint32 tid = 0; tic €kb€kbd < SMC_I€kbUtility::cMaxThreads; ++tid){}'
+let @c = '^w*NNoj'
 
 set cursorline
 " Syntax highlight template files
@@ -70,14 +75,15 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%f
 
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_compiler_options = '-Wall -Wextra -Wundef -Wshadow -Wunreachable-code -pipe -DUSE_DTF_SEQIDS'
+let g:syntastic_cpp_config_file = ".rtx_syntastic_includes"
+let g:syntastic_cpp_check_header = 1
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_check_header = 0
-let g:syntastic_cpp_compiler_options = '-Wall -pipe'
-let g:syntastic_cpp_no_include_search = 1
-let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_config_file = "$p9/.rtx_syntastic_cpp_config"
+let g:syntastic_debug = 0
+" let g:syntastic_cpp_compiler_options = '-fmessage-length=0 -fPIC -Wchar-subscripts -Wformat -Wmissing-braces -Wparentheses -Wreorder -Wreturn-type -Wstrict-aliasing -Wswitch -Wtrigraphs -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wc++11-compat -Wunused-variable'
+
