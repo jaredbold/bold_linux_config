@@ -76,7 +76,7 @@ set statusline+=%*
 set statusline+=%f
 
 let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_compiler_options = '-Wall -Wextra -Wundef -Wshadow -Wunreachable-code -pipe -DUSE_DTF_SEQIDS'
+let g:syntastic_cpp_compiler_options = '-Wall -Wextra -Wundef -Wshadow -Wunreachable-code std=c++03 -pipe -DUSE_DTF_SEQIDS'
 let g:syntastic_cpp_config_file = ".rtx_syntastic_includes"
 let g:syntastic_cpp_check_header = 1
 

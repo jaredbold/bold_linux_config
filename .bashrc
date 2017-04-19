@@ -1,100 +1,50 @@
 #!/bin/bash
-###############################################################
-# .bashrc
-# Jared Bold
-# 1.22.15
-###############################################################
-# Configuration
+################################################################################
+# File: .bashrc
+# Author: Jared Bold
+# Date: 03.09.2017
+# Description:
+#   This is the minimal set of settings needed to have a working bash
+#   environment. This loads extra .bashrc files from ~/.bashrc.d directory
+################################################################################
 OS=`uname`
-
-###############################################################
-#			Prompt				      #
-###############################################################
+################################################################################
+# Prompt  #
+################################################################################
 export PS1='\u:\W$ '
-P='*/jmbold/'
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
-###############################################################
-#			Terminal			      #
-###############################################################
-export EDITOR=vim
-if [ $OS == "Linux" ]; then
-  export PATH=$PATH:$HOME/bin
+################################################################################
+# Input  #
+################################################################################
+set -o vi       # input mode is vim
+stty erase '^?' # disable the bell, not sure this is needed
+if [ "$OS" == "Linux" ]; then
   xset b off
 fi
 
-# enable vi input mode
-set -o vi
-# disable the bell
-stty erase '^?'
+################################################################################
+# Important exports #
+################################################################################
+export LS_COLORS=$LS_COLORS:'ow=34;1:' # fix ls color outputs
+export EDITOR=vim
+export LESS="-Ri" # set search to smart-case
 
-LS_COLORS=$LS_COLORS:'ow=34;1:' ; export LS_COLORS
-export LESS="-Ri"
-###############################################################
-#			Aliases				      #
-###############################################################
-alias :q='exit'
-alias findi='find . -iname'
-alias todo=~/.todo
+################################################################################
+# Tab Completion  #
+################################################################################
+bind "set show-all-if-ambiguous on"
+bind "TAB:menu-complete" 
+
+################################################################################
+# Important Aliases #
+################################################################################
 alias ..='cd ..'
-if [ $OS == "Linux" ]; then
-  alias ls='ls --color=auto'
-  alias ll='ls -la'
-  alias grep='grep --color=auto'
-fi
-
-alias l='less' 
-alias nw='(xterm &)'
-alias g='grep'
-
-alias c='clear'
-
-
-alias vi='vim'
-alias vimvs='vim -O'
-alias vimsp='vim -o'
-
 alias ebrc='vim ~/.bashrc'
 alias sbrc='source ~/.bashrc'
 
-#vim aliases
-alias vsvim='vim -O'
-alias hsvim='vim -o'
-alias tvim='vim -p'
-alias evimrc='vim ~/.vimrc'
-
-# grep functions
-function grn() {
-  grep -rnI $1 *
-}
-function grni() {
-  grep -irnI $1 *
-}
-
-function find_ignore_hidden() {
-  find `pwd` -type d -path '*/\.*' -prune -o -not -name '.*' -type f -iname \*$1\* -print
-}
-
-function new_terminal_hold() {
-  (xterm -hold -e "$SHELL -ic $1")
-}
-
-function new_terminal() {
-  (xterm -e "$SHELL -ic $1")
-}
-function todo() {
-  (new_terminal "'vim $HOME/todo.list'" &)
-}
-function backlog() {
-  (new_terminal "'vim $HOME/backlog/backlog'" &)
-}
-function shell_title() {
-  export SHELL_TITLE="\033]0;$1\007"
-  PROMPT_COMMAND='echo -ne "$SHELL_TITLE"'
-}
-
 #################################################################
-#     Scripts           #
+# Scripts #
 #################################################################
 for script in ~/.bashrc.d/*; do
   if [ -x "${script}" ]; then
