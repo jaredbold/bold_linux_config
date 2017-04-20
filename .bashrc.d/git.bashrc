@@ -11,4 +11,5 @@
 . ~/bold_linux_config/git-prompt.sh
 
 export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
 export PS1='\u:\W$(__git_ps1 " (%s)")\$ '
