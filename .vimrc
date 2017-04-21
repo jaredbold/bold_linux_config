@@ -65,6 +65,8 @@ let @c = '^w*NNoj'
 set cursorline
 " Syntax highlight template files
 autocmd BufRead,BufNewFile *.T set filetype=cpp
+" Syntax for .def files to XML
+autocmd BufRead,BufNewFile *.def set filetype=xml
 
 " Airline Settings
 let g:airline_theme='murmur'
@@ -87,3 +89,4 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_debug = 0
 " let g:syntastic_cpp_compiler_options = '-fmessage-length=0 -fPIC -Wchar-subscripts -Wformat -Wmissing-braces -Wparentheses -Wreorder -Wreturn-type -Wstrict-aliasing -Wswitch -Wtrigraphs -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wc++11-compat -Wunused-variable'
 
+let g:syntastic_xml_xmllint_quiet_messages = {"regex":"failed to load external entity"}
