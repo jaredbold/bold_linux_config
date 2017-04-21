@@ -20,7 +20,9 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 set -o vi       # input mode is vim
 stty erase '^?' # disable the bell, not sure this is needed
 if [ "$OS" == "Linux" ]; then
-  xset b off
+  if xset q &> /dev/null; then
+    xset b off
+  fi
 fi
 
 ################################################################################
