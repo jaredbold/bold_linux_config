@@ -90,3 +90,6 @@ let g:syntastic_debug = 0
 " let g:syntastic_cpp_compiler_options = '-fmessage-length=0 -fPIC -Wchar-subscripts -Wformat -Wmissing-braces -Wparentheses -Wreorder -Wreturn-type -Wstrict-aliasing -Wswitch -Wtrigraphs -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wc++11-compat -Wunused-variable'
 
 let g:syntastic_xml_xmllint_quiet_messages = {"regex":"failed to load external entity"}
+
+" Fugitive settings
+set statusline+=%{fugitive#statusline()}
