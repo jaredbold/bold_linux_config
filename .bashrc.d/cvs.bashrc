@@ -17,4 +17,4 @@ alias cvscheck_new='cvscheck | grep "^?"'
 alias cvscheck_update='cvscheck | grep "^U"'
 alias cvscheck_patch='cvscheck | grep "^P"'
 alias cvsreset='cvs update -C'
-alias cvsmod='cvscheck_modified > jmbold.mod; cat jmbold.mod'
+alias cvsmod="cvscheck_modified > $USER.mod; cat $USER.mod"

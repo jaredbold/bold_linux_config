@@ -13,7 +13,7 @@ OS=`uname`
 # Shortcuts  #
 ################################################################################
 alias l='less' 
-alias g='grep'
+alias g='git'
 alias c='clear'
 alias :q='exit' # In case you are to used to working in vim
 

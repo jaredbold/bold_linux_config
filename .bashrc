@@ -30,7 +30,7 @@ fi
 ################################################################################
 export LS_COLORS=$LS_COLORS:'ow=34;1:' # fix ls color outputs
 export EDITOR=vim
-export LESS="-Ri" # set search to smart-case
+export LESS="-Ri -F -X $LESS" # set search to smart-case, do not paginate if less than a page
 
 ################################################################################
 # Tab Completion  #

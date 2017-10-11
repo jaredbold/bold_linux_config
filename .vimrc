@@ -47,8 +47,7 @@ set shiftwidth=2
 set softtabstop=2
 
 " Color column over 80 characters
-"highlight ColorColumn ctermbg=yellow ctermfg=black
-"call matchadd('ColorColumn', '\%81v', 100)
+autocmd BufWinEnter *.C,*.h let w:m1=matchadd('ErrorMsg', '\%>80v.\+',-1)
 
 " Doxygen syntax
 let g:load_doxygen_syntax=1
@@ -56,17 +55,16 @@ let g:load_doxygen_syntax=1
 " Commands
 " Filter
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+command! RemoveEolWhitepace :%s/\s\+$//
 
 " Macro
-let @d = 'oif(){}koout() << simcycle << getName() << "::" << __FUNCTION++€kb€kb__ << ":"		<<<< endlh€kb;kkkk'
-let @t = 'ofor(uint32 tid = 0; tic €kb€kbd < SMC_I€kbUtility::cMaxThreads; ++tid){}'
-let @c = '^w*NNoj'
 
 set cursorline
 " Syntax highlight template files
 autocmd BufRead,BufNewFile *.T set filetype=cpp
 " Syntax for .def files to XML
 autocmd BufRead,BufNewFile *.def set filetype=xml
+autocmd BufRead,BufNewFile *.ih set filetype=xml
 
 " Airline Settings
 let g:airline_theme='murmur'
@@ -78,16 +76,19 @@ set statusline+=%*
 set statusline+=%f
 
 let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_compiler_options = '-Wall -Wextra -Wundef -Wshadow -Wunreachable-code std=c++03 -pipe -DUSE_DTF_SEQIDS'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -Wall -Wextra -Wundef -Wshadow -Wunreachable-code'
 let g:syntastic_cpp_config_file = ".rtx_syntastic_includes"
 let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_include_dirs = ['/afs/awd.austin.ibm.com/proj/p3/cte/tools/fusion/vol1/releases/R80_0-noarch/src']
+
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+let g:syntastic_cpp_cpplint_args='--verbose=3 --extension=C,h'
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_debug = 0
-" let g:syntastic_cpp_compiler_options = '-fmessage-length=0 -fPIC -Wchar-subscripts -Wformat -Wmissing-braces -Wparentheses -Wreorder -Wreturn-type -Wstrict-aliasing -Wswitch -Wtrigraphs -Wunknown-pragmas -Wunused-function -Wunused-label -Wunused-value -Wc++11-compat -Wunused-variable'
 
 let g:syntastic_xml_xmllint_quiet_messages = {"regex":"failed to load external entity"}
 
