@@ -5,6 +5,9 @@
 execute pathogen#infect()
 filetype indent plugin on
 syntax on
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 set lazyredraw
 set ttyfast
@@ -45,6 +48,8 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+
+let mapleader= ","
 
 " Color column over 80 characters
 autocmd BufWinEnter *.C,*.h let w:m1=matchadd('ErrorMsg', '\%>80v.\+',-1)
